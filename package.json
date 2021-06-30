@@ -18,7 +18,7 @@
     "build:test": "webpack --mode development --https false --config ./test/webpack.config.js",
     "build-dev": "webpack --mode development --https false && echo . && echo . && echo . && echo Please use 'build:dev' instead of 'build-dev'.",
     "convert-to-single-host": "node convertToSingleHost.js",
-    "dev-server": "webpack-dev-server --mode development",
+    "dev-server": "webpack serve --mode development",
     "lint": "office-addin-lint check",
     "lint:fix": "office-addin-lint fix",
     "prettier": "office-addin-lint prettier",
@@ -31,6 +31,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "axios": "^0.21.1",
     "bulma": "^0.9.3",
     "font-awesome": "^4.7.0"
