@@ -1,6 +1,3 @@
-<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
-<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,10 +8,12 @@
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script defer src="../../node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 
     <link rel="stylesheet" href="../../assets/css/bulma.min.css" />
-    <link rel="stylesheet" href="../../assets/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <!-- <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/> -->
+    <link rel="stylesheet" href="../../node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
   </head>
 
@@ -22,31 +21,33 @@
     <!--<h3 class="title has-text-centered"><i class="fa fa-camera-retro is-large"></i></h3>-->
     <div class="has-text-centered"><img src="../../assets/icon-64.png" alt="" /></div>
     <section id="sideload-msg" class="notification is-danger">
-      <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+      <h2 class="ms-font-xl" data-i18n="taskpane.sideloadMessage">Please sideload your add-in to see app body.</h2>
     </section>
     <main id="app-body" style="display: none;">
       <section id="appSection" class="section" style="padding-top: 0;display: flex;">
         <form>
-          <label class="label">Buscar por cita.</label>
+          <label class="label" data-i18n="taskpane.insertQuote.label">Insert quote</label>
           <div class="field has-addons">
             <div class="control has-icons-right is-expanded">
-              <input class="input" type="text" placeholder="Juan 3, 16" value="" id="txtQuote" />
+              <input class="input" type="text" placeholder="Juan 3, 16" data-i18n="[placeholder]taskpane.insertQuote.placeholder" value="" id="txtQuote" />
             </div>
             <div class="control" id="getByQuote">
-              <a class="button is-info" title="Consultar">
-                <i class="fa fa-search"></i>
+              <a class="button is-info" title="Consultar" data-i18n="[title]taskpane.getByQuote.title">
+                <span class="icon">
+                  <i class="fa fa-download"></i>
+                </span>
               </a>
             </div>
           </div>
           <p id="lbErrMsg" class="help is-danger"></p>
 
-          <label class="label">Buscar por palabra clave.</label>
+          <label class="label" data-i18n="taskpane.getByKeyword.label">Buscar por palabra clave.</label>
           <div class="field has-addons">
             <div class="control has-icons-right is-expanded">
-              <input class="input" type="text" placeholder="Creación" value="" id="txtKeyword" />
+              <input class="input" type="text" placeholder="Creación" data-i18n="[placeholder]taskpane.getByKeyword.placeholder" value="" id="txtKeyword" />
             </div>
             <div class="control" id="getByKeyword">
-              <a class="button is-info" title="Consultar">
+              <a class="button is-info" title="Consultar" data-i18n="[title]taskpane.getByKeyword.title">
                 <span class="icon">
                   <i class="fa fa-search"></i>
                 </span>
@@ -55,7 +56,7 @@
           </div>
           <div class="field">
             <div class="control">
-              <label class="checkbox">
+              <label class="checkbox" data-i18n="taskpane.exactMatch">
                 <input type="checkbox" id="chkExactMatch" />
                 Coincidencia exacta
               </label>
@@ -64,7 +65,7 @@
           <hr />
           <div class="field">
             <div class="control">
-              <label class="label">Versión.</label>
+              <label class="label" data-i18n="taskpane.bibleVersion">Versión.</label>
               <div class="select is-rounded is-fullwidth">
                 <select id="cbVersion">
                   <option value="CEI2008">Conferenza Episcopale Italiana|2008|it</option>
@@ -79,7 +80,7 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">Origen preferido.</label>
+            <label class="label" data-i18n="taskpane.preferredOrigin">Origen preferido.</label>
             <div class="control">
               <label class="radio">
                 <input type="radio" name="rdOrigin" value="GREEK" checked />
